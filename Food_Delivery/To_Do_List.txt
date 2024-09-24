@@ -1,0 +1,43 @@
+﻿things to do next->
+
+1. add validation where it checks if email or phone number is same to an existing account while creating a new account show an error message to the user
+done!!
+2. add a dashboard page 
+done!!
+3. create a session id for email
+done!!
+4. To check if user is logged in than proceed to show dashboard else redirect user to login page
+done!!
+5. Add log out functionality in dashboard log out button
+done!!
+6. Add contents to restaurant table
+done!!
+7. Make Menu for each restaurant
+done!!
+8. Make cart page for seeing user's cart items
+done!!
+9. A message will be shown on cart page if there is no food items in cart
+done!!
+10. No food items also means no Order Now button visible
+done!!
+11. Add Add to cart functionality
+done!!
+12. An order now button which will prompt to a new page for entering address and all that.
+not done!!
+13. Create admin side login
+done!!
+14. Create admin dashboard with 3 buttons to redirect admin to appropriate pages for crud operations
+done!!
+15. Create those pages and apply crud operations to complete
+done!!
+16. Add Restaurant name instead of restaurant id in view food items
+not done!!
+17. Add edit and delete operations in cart for users
+done!!
+
+main errors-> On change in quantity in edit food item, total price in frontend only (database has correctly stored data) remains same even if change in quantity
+solution: add onTextChanged() function to that textfield or add a javascript in the code
+
+Restaurant id is shown instead of restaurant name in view food items
+solution: fetch restaurant name through restaurant id and done
+

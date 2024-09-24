@@ -1,0 +1,10 @@
+﻿body {
+	background-image: url('background.jpg');
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-position: center;
+	/* Optional: You can set a default font color and other styles */
+	color: #333;
+	font-family: Arial, sans-serif;
+}
