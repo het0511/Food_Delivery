@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="EditCartItem.aspx.cs" Inherits="Food_Delivery.pages.EditCartItem" %>
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="EditCartItem.aspx.cs" Inherits="Food_Delivery.pages.EditCartItem" %>
 
 <!DOCTYPE html>
 
@@ -43,7 +43,7 @@
             </div>
             <div class="form-group">
                 <label for="txtQuantity">Quantity:</label>
-                <asp:TextBox ID="txtQuantity" runat="server" CssClass="form-control" type="number" min="1" />
+                <asp:TextBox ID="txtQuantity" runat="server" CssClass="form-control" type="number" min="1" OnChange="updateTotalPrice()" />
             </div>
 
             <div class="form-group">
@@ -62,5 +62,14 @@
             </div>
         </div>
     </form>
+    <script>
+        function updateTotalPrice() {
+            var quantity = document.getElementById('<%= txtQuantity.ClientID %>').value;
+            var pricePerItem = parseFloat(document.getElementById('<%= lblPrice.ClientID %>').innerText);
+            var totalPrice = quantity * pricePerItem;
+
+            document.getElementById('<%= lblTotalPrice.ClientID %>').innerText = totalPrice.toFixed(2); // Format to 2 decimal places
+        }
+    </script>
 </body>
 </html>
