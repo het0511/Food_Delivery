@@ -1,4 +1,4 @@
-﻿using Food_Delivery.data_access;
+using Food_Delivery.data_access;
 using Food_Delivery.models;
 using System;
 using System.Collections.Generic;
@@ -21,12 +21,27 @@ namespace Food_Delivery.pages.admin
                 LoadFoodItems();
             }
         }
-
         private void LoadFoodItems()
         {
             FoodItemDataAccess foodItemDataAccess = new FoodItemDataAccess();
-            var foodItems = foodItemDataAccess.GetFoodItems(); // Assuming this returns a list with RestaurantName included
-            GridViewFoodItems.DataSource = foodItems;
+            var foodItemsWithNames = foodItemDataAccess.GetFoodItemsWithRestaurantNames(); // Use the new method
+
+            // Create a new list to bind to the GridView
+            var foodItemsList = new List<dynamic>(); // or List<YourCustomViewModel> if you create one
+
+            foreach (var item in foodItemsWithNames)
+            {
+                foodItemsList.Add(new
+                {
+                    FoodItemId = item.foodItem.FoodItemId,
+                    Name = item.foodItem.Name,
+                    Description = item.foodItem.Description,
+                    Price = item.foodItem.Price,
+                    RestaurantName = item.restaurantName // Add restaurant name to the list
+                });
+            }
+
+            GridViewFoodItems.DataSource = foodItemsList;
             GridViewFoodItems.DataBind();
         }
 
