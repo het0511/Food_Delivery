@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ViewFoodItems.aspx.cs" Inherits="Food_Delivery.pages.admin.ViewFoodItems" %>
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ViewFoodItems.aspx.cs" Inherits="Food_Delivery.pages.admin.ViewFoodItems" %>
 
 <!DOCTYPE html>
 
@@ -103,7 +103,7 @@
                     <asp:BoundField DataField="Price" HeaderText="Price" DataFormatString="{0:C}" />
                     <asp:TemplateField HeaderText="Restaurant">
                         <ItemTemplate>
-                            <%# Eval("RestaurantId") %>
+                            <%# Eval("RestaurantName") %>
                         </ItemTemplate>
                     </asp:TemplateField>
 
