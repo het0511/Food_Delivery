@@ -1,4 +1,4 @@
-﻿using Food_Delivery.models;
+using Food_Delivery.models;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
