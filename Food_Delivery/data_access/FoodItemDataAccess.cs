@@ -161,5 +161,40 @@ namespace Food_Delivery.data_access
                 }
             }
         }
+
+        public List<(FoodItem foodItem, string restaurantName)> GetFoodItemsWithRestaurantNames()
+        {
+            List<(FoodItem foodItem, string restaurantName)> foodItemsWithRestaurantNames = new List<(FoodItem, string)>();
+            using (MySqlConnection conn = new MySqlConnection(connectionString))
+            {
+                string query = @"
+                    SELECT fi.FoodItemId, fi.Name, fi.Description, fi.Price, fi.RestaurantId, r.Name AS RestaurantName
+                    FROM fooditems fi
+                    JOIN restaurants r ON fi.RestaurantId = r.RestaurantId";
+
+                using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                {
+                    conn.Open();
+                    using (MySqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            FoodItem foodItem = new FoodItem
+                            {
+                                FoodItemId = reader.GetInt32("FoodItemId"),
+                                Name = reader.GetString("Name"),
+                                Description = reader.IsDBNull(reader.GetOrdinal("Description")) ? null : reader.GetString("Description"),
+                                Price = reader.GetDecimal("Price"),
+                                RestaurantId = reader.GetInt32("RestaurantId")
+                            };
+                            string restaurantName = reader.GetString("RestaurantName");
+
+                            foodItemsWithRestaurantNames.Add((foodItem, restaurantName));
+                        }
+                    }
+                }
+            }
+            return foodItemsWithRestaurantNames;
+        }
     }
 }
