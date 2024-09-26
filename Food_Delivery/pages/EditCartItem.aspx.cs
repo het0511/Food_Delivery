@@ -1,4 +1,4 @@
-﻿using Food_Delivery.data_access;
+using Food_Delivery.data_access;
 using Food_Delivery.models;
 using System;
 using System.Collections.Generic;
@@ -37,8 +37,8 @@ namespace Food_Delivery.pages
             {
                 lblFoodItemName.Text = cartItem.FoodItemName;
                 txtQuantity.Text = cartItem.Quantity.ToString();
-                lblPrice.Text = foodItem.Price.ToString("C");
-                lblTotalPrice.Text = (foodItem.Price * cartItem.Quantity).ToString("C");
+                lblPrice.Text = foodItem.Price.ToString();
+                lblTotalPrice.Text = (foodItem.Price * cartItem.Quantity).ToString();
             }
             else
             {
